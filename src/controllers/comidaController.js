@@ -51,3 +51,26 @@ export const listarUm = async (req, res) => {
         });
     }
 }
+
+export const create = async (req, res) => {
+    try{
+        const { nome, tipo, preco, descricao } = req.body;
+
+        if(!nome || !tipo || !preco || !descricao) {
+            res.status(400).json({
+                total: 0,
+                mensagem: 'Campos obrigatórios não informados',
+                status: 400
+            });
+        }
+
+        const dados = {
+            nome,
+            tipo,
+            preco,
+            descricao
+        };
+
+        const camposObrigatorios = ['nome', 'tipo', 'preco', 'descricao'];
+
+
